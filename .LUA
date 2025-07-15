@@ -4260,22 +4260,7 @@ ThemeManager:ApplyToTab(Tabs["UI Settings"])
 SaveManager:LoadAutoloadConfig()
 
 InformationGroup:AddDivider()
-InformationGroup:AddDropdown("LibraryChoice", {
-    Text = "Library Choice",
-    Values = allowedlibs,
-    Default = targetlib
-})
-Options.LibraryChoice:OnChanged(function(val)
-    if val == targetlib then return end
-    writefile("Voidware_InkGame_Library_Choice.txt", val)
-    Library:Unload()
-    if shared.VoidDev and isfile("inkgame.lua") then
-        loadstring(readfile("inkgame.lua"))()
-    else
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/VW-Add/main/inkgame.lua", true))()
-    end
-end)
-InformationGroup:AddDivider()
+
 
 InformationGroup:AddButton("Save Settings", function()
     local suc, err = pcall(function()
